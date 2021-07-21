@@ -6,10 +6,10 @@ namespace CovidHealthcare.Controllers
 {
     public class HospitalsController : Controller
     {
-        private readonly IHospitalControllerService controlService;
-        public HospitalsController(IHospitalControllerService controlService)
+        private readonly IHospitalControllerService hospitalControllerService;
+        public HospitalsController(IHospitalControllerService hospitalControllerService)
         {
-            this.controlService = controlService;
+            this.hospitalControllerService = hospitalControllerService;
         }
         public ActionResult Create()
         {
@@ -21,8 +21,12 @@ namespace CovidHealthcare.Controllers
         {
             if (ModelState.IsValid)
             {
-                controlService.CreateHospital(hospital);
-                return Content("Succesfully registered");
+                if (hospitalControllerService.IsInDatabase(hospital.Email))
+                {
+                    return Content("Email has been pre-registered");
+                }
+                hospitalControllerService.CreateHospital(hospital);
+                return Content("Registration success!");
             }
             return View(hospital);
         }

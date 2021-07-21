@@ -8,6 +8,8 @@ using CovidHealthcare.ViewModel;
 using CovidHealthcare.Proxy;
 using System.Web.Security;
 
+
+
 namespace CovidHealthcare.Controllers
 {
 
@@ -36,49 +38,34 @@ namespace CovidHealthcare.Controllers
             {
                 if (accountControllerService.Login(loginViewModel))
                 {
-                    FormsAuthentication.SetAuthCookie(loginViewModel.Email, false);
-                    return RedirectToAction("Redirect", "Accounts");
+                    FormsAuthentication.SetAuthCookie(loginViewModel.Email, true);
+                    Session["UserEmail"] = loginViewModel.Email;
+                    return RedirectToAction("Redirect");
                 }
                 return View(loginViewModel);
             }
 
             return View(loginViewModel);
         }
-        public ActionResult Register()
-        {
-            RegisterViewModel registerViewModel = new RegisterViewModel();
-            registerViewModel = accountControllerService.Register();
-            return View(registerViewModel);
-        }
-        [HttpPost]
-        public ActionResult Register(RegisterViewModel registerViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                accountControllerService.CreateUser(registerViewModel);
-
-                return RedirectToAction("Login");
-            }
-            return View(registerViewModel);
-        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Redirect()
         {
-            if (User.IsInRole("Admin"))
+            string userEmail = Session["UserEmail"].ToString();
+            WebRoleProvider roleProvider = new WebRoleProvider();
+            if (roleProvider.IsUserInRole(userEmail, "Admin"))
             {
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
-            else if (User.IsInRole("Hospital_Employee"))
+            else if (roleProvider.IsUserInRole(userEmail, "Hospital_Employee"))
             {
-                RedirectToAction("Create", "Hospitals");
+                return RedirectToAction("Create", "Hospitals");
             }
 
-
-            return Content("Sorry");
+            return Content("You do not have the correct permission to see this page.");
 
         }
 

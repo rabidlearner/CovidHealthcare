@@ -67,7 +67,6 @@ namespace CovidHealthcare.ControllerService
             List<Models.UserRole> userRoles = new List<Models.UserRole>();
             ViewModel.User userView = new ViewModel.User();
             userRoles = userRoleProxy.GetAllUserRoles();
-            //userView = AutoMapper.Mapper.Map<Models.User, ViewModel.User>(user);
             foreach (var userRole in userRoles)
             {
                 userRoleView.Add(AutoMapper.Mapper.Map<Models.UserRole, ViewModel.UserRole>(userRole));

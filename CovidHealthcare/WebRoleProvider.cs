@@ -58,10 +58,6 @@ namespace CovidHealthcare
                               select roles.Role).ToArray();
                 return result;
             }
-            //string[] result = new string[20]();
-            //result = proxy.GetRolesForUser(username);
-            //return result;
-            //throw new NotImplementedException();
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -71,7 +67,24 @@ namespace CovidHealthcare
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new NotImplementedException();
+
+            using (ApplicationDbContext dbContext = new ApplicationDbContext())
+            {
+                var result = (from user in dbContext.Users
+                              join roles in dbContext.UserRoles
+                              on user.UserRoleId equals roles.Id
+                              where user.Email == username
+                              select roles.Role).ToArray();
+                if (result[0] == roleName)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

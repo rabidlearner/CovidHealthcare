@@ -66,5 +66,10 @@ namespace CovidHealthcare.Proxy
 
             return hospital;
         }
+
+        public bool IsInDatabase(string email)
+        {
+            return hospitalQueryService.IsInDatabase(email);
+        }
     }
 }

@@ -6,14 +6,14 @@
 }
 
 
-<body class="body-content" style="background-image: url('../../Images/Customer.jpg');background-position-x: -150px;background-position-y: -100px;">
+<body class="body-content" style="background-image: url('../../Images/vaccine1.jpg');background-position-x: -150px;background-position-y: -100px;">
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal form-body">
-            <h2>Register for Vaccine</h2>
+            <h2>Vaccination Registration</h2>
             <h4 style="padding-left: 40px; color: red;">* All fields are mandatory</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })

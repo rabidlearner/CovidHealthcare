@@ -21,6 +21,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Index", "Accounts")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Accounts")</li>
+                    }
                 </ul>
             </div>
         </div>

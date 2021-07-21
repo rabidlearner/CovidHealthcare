@@ -37,5 +37,10 @@ namespace CovidHealthcareApi.Services
             hospitalDto = AutoMapper.Mapper.Map<Repository.Entity.Hospital, Hospital>(hospital);
             return hospitalDto;
         }
+
+        public bool IsInDatabase(string email)
+        {
+            return repository.IsInDatabase(email);
+        }
     }
 }

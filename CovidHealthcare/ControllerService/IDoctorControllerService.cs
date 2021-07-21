@@ -10,6 +10,8 @@ namespace CovidHealthcare.ControllerService
     {
         List<ViewModel.Doctor> GetDoctors();
         void CreateDoctor(Doctor Doctor);
+        void DeleteDoctorById(int id);
+        Doctor GetDoctorById(int id);
 
     }
 }

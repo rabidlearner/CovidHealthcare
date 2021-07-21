@@ -10,5 +10,6 @@ namespace CovidHealthcare.ControllerService
     {
         void CreateHospital(Hospital hospital);
         List<Hospital> GetHospitals();
+        bool IsInDatabase(string email);
     }
 }

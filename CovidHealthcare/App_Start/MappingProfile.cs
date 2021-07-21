@@ -14,6 +14,8 @@ namespace CovidHealthcare.App_Start
             Mapper.CreateMap<CovidHealthcareApi.DTO.User, CovidHealthcare.Models.User>();
             Mapper.CreateMap<CovidHealthcare.Models.UserRole, CovidHealthcareApi.DTO.UserRole>();
             Mapper.CreateMap<CovidHealthcareApi.DTO.UserRole, CovidHealthcare.Models.UserRole>();
+            Mapper.CreateMap<CovidHealthcare.Models.Doctor, CovidHealthcareApi.DTO.Doctor>();
+            Mapper.CreateMap<CovidHealthcareApi.DTO.Doctor, CovidHealthcare.Models.Doctor>();
 
             Mapper.CreateMap<CovidHealthcareApi.Repository.Entity.UserRole, CovidHealthcareApi.DTO.UserRole>();
             Mapper.CreateMap<CovidHealthcareApi.DTO.UserRole, CovidHealthcareApi.Repository.Entity.UserRole>();

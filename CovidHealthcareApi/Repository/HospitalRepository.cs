@@ -25,9 +25,24 @@ namespace CovidHealthcareApi.Repository
 
         public List<Hospital> GetAllHospitals()
         {
-            var hospitals = dbContext.Hospitals.ToList();
+            List<Hospital> hospitals = new List<Hospital>();
+            List<Hospital> hospitalsNotInDatabase = new List<Hospital>();
+            hospitals = dbContext.Hospitals.ToList();
+            List<string> emails = new List<string>();
+            emails = dbContext.Users.Select(m => m.Email).ToList();
+            foreach (var hospital in hospitals)
+            {
+                if (!emails.Contains(hospital.Email))
+                {
+                    hospitalsNotInDatabase.Add(hospital);
+                }
+                else
+                {
+                    continue;
+                }
+            }
 
-            return hospitals;
+            return hospitalsNotInDatabase;
         }
 
         public Hospital GetHospitalById(int id)
@@ -47,6 +62,18 @@ namespace CovidHealthcareApi.Repository
         {
             dbContext.Entry(hospital).State = EntityState.Modified;
             dbContext.SaveChanges();
+        }
+        public bool IsInDatabase(string email)
+        {
+            var obj = dbContext.Hospitals.FirstOrDefault(m => m.Email == email);
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -152,14 +152,17 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="ControllerService\AccountControllerService.cs" />
+    <Compile Include="ControllerService\AdminControllerService.cs" />
     <Compile Include="ControllerService\CustomerControllerService.cs" />
     <Compile Include="ControllerService\DoctorControllerService.cs" />
     <Compile Include="ControllerService\HospitalControllerService.cs" />
     <Compile Include="ControllerService\IAccountControllerService.cs" />
+    <Compile Include="ControllerService\IAdminControllerService.cs" />
     <Compile Include="ControllerService\ICustomerControllerService.cs" />
     <Compile Include="ControllerService\IDoctorControllerService.cs" />
     <Compile Include="ControllerService\IHospitalControllerService.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,10 +231,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
-    <Content Include="Views\Accounts\Register.cshtml" />
+    <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
     <Content Include="Views\Hospitals\Create.cshtml" />
     <Content Include="Views\Doctors\Create.cshtml" />
+    <Content Include="Views\Admin\DeleteHospital.cshtml" />
+    <Content Include="Views\Admin\Hospitals.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Doctors\Delete.cshtml" />
+    <Content Include="Views\Doctors\Index.cshtml" />
+    <Content Include="Views\Hospitals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

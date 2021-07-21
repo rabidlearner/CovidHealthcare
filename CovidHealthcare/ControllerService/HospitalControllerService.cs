@@ -29,5 +29,9 @@ namespace CovidHealthcare.ControllerService
             }
             return DoctorView;
         }
+        public bool IsInDatabase(string email)
+        {
+            return proxy.IsInDatabase(email);
+        }
     }
 }

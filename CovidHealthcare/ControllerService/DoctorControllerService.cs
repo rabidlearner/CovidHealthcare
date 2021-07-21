@@ -30,5 +30,18 @@ namespace CovidHealthcare.ControllerService
             Models.Doctor DoctorModel = AutoMapper.Mapper.Map<ViewModel.Doctor, Models.Doctor>(Doctor);
             proxy.CreateDoctor(DoctorModel);
         }
+
+        public void DeleteDoctorById(int id)
+        {
+            proxy.DeleteDoctorById(id);
+        }
+        public Doctor GetDoctorById(int id)
+        {
+            Doctor DoctorView = new Doctor();
+            Models.Doctor Doctor = new Models.Doctor();
+            Doctor = proxy.GetDoctorById(id);
+            DoctorView = AutoMapper.Mapper.Map<Models.Doctor, Doctor>(Doctor);
+            return DoctorView;
+        }
     }
 }

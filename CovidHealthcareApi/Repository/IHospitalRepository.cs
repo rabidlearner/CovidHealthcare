@@ -14,5 +14,6 @@ namespace CovidHealthcareApi.Repository
         void CreateHospital(Hospital hospital);
         void DeleteHospitalById(int id);
         void EditHospital(Hospital hospital);
+        bool IsInDatabase(string email);
     }
 }

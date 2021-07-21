@@ -11,5 +11,6 @@ namespace CovidHealthcareApi.Services
     {
         Hospital GetHospitalById(int id);
         List<Hospital> GetAllHospitals();
+        bool IsInDatabase (string email);
     }
 }

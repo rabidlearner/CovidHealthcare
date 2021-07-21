@@ -14,5 +14,6 @@ namespace CovidHealthcare.Proxy
         void EditHospital(Hospital hospital);
         void DeleteHospitalById(int id);
         Hospital GetHospitalById(int id);
+        bool IsInDatabase(string email);
     }
 }

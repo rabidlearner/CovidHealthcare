@@ -24,7 +24,7 @@ namespace CovidHealthcare.Controllers
             if (ModelState.IsValid)
             {
                 controllerService.CreateCustomer(customer);
-                ViewBag.result = "Successfully Registered!";
+                ViewBag.result = "Registration is a success";
             }
             return View(customer);
         }

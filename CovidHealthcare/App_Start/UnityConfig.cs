@@ -44,6 +44,7 @@ namespace CovidHealthcare
             container.RegisterType<IDoctorControllerService, DoctorControllerService>();
             container.RegisterType<IHospitalControllerService, HospitalControllerService>();
             container.RegisterType<ICustomerControllerService, CustomerControllerService>();
+            container.RegisterType<IAdminControllerService, AdminControllerService>();
 
 
             container.RegisterType<ICustomerQueryService, CustomerQueryService>();

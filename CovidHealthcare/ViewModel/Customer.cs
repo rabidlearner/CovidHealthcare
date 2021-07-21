@@ -38,7 +38,7 @@ namespace CovidHealthcare.ViewModel
 
 
         [Required(ErrorMessage = "Please choose a Hospital")]
-        [Display(Name = "Nearby Hospital")]
+        [Display(Name = "Hospitals")]
         public int HospitalId { get; set; }
         public IList<Hospital> Hospital { get; set; }
 
